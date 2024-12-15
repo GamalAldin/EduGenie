@@ -1,0 +1,4 @@
+{
+  "/[courseId]/exams/page": "app/[courseId]/exams/page.js",
+  "/(dashboard)/list/courses/page": "app/(dashboard)/list/courses/page.js"
+}
