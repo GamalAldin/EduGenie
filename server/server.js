@@ -23,6 +23,18 @@ app.use(
   })
 );
 
+// Middleware to log client IP addresses
+app.use((req, res, next) => {
+  // Get the client IP address
+  const clientIp = req.headers["x-forwarded-for"] || req.ip;
+
+  // Log the IP address
+  console.log(`Client IP: ${clientIp}`);
+
+  // Proceed to the next middleware or route handler
+  next();
+});
+
 // Use the exam routes and upload routes
 app.use("/teacher", courseRoutes);
 app.use("/teacher", examRoutes);

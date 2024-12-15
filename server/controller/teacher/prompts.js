@@ -14,7 +14,7 @@ exports.generateExamPrompt = (ch, sec = []) => {
     prompt += `- question_number: Unique identifier within the section\n`;
     prompt += `- question: The text of the question\n`;
     prompt += `- model_answer: A detailed answer to the question\n`;
-    prompt += `- grading_criteria: generate detailed grading criteria for the question based on its model answer. The grading criteria should be specific and broken down into the following levels:\n\n`;
+    prompt += `- grading_criteria: Generate detailed grading criteria for the question based on its model answer. The grading criteria should be specific and broken down into the following levels:\n\n`;
 
     prompt += `
     1. **Full Marks**: Provide a detailed explanation of what a student must include in their answer to receive full marks. Specify the points allocated for each part of the answer and the total score for a fully correct answer.
@@ -23,8 +23,8 @@ exports.generateExamPrompt = (ch, sec = []) => {
     `;
 
     if (section.type === "MCQ") {
-      prompt += `- choices: An array of four answer options\n`;
-      prompt += `- correct_answer: The correct choice from the options provided\n`;
+      prompt += `- choices: An array of exactly four answer options. Each option must be labeled as A), B), C), or D) to maintain a consistent format.\n`;
+      prompt += `- correct_answer: Specify the correct choice as one of the labeled options (e.g., "A", "B", "C", or "D").\n`;
     } else if (section.type === "True/False") {
       prompt += `- correct_answer: Either "true" or "false"\n`;
     }
@@ -44,6 +44,13 @@ exports.generateExamPrompt = (ch, sec = []) => {
           {
             "question_number": 1,
             "question": "Generated question",
+            "choices": [
+              "A) Option 1",
+              "B) Option 2",
+              "C) Option 3",
+              "D) Option 4"
+            ],
+            "correct_answer": "C",
             "model_answer": "Expected detailed answer",
             "grading_criteria": [
               "Full marks: X points for complete response",
