@@ -1,4 +1,4 @@
-// File: C:\Users\ok\Desktop\Grad_frontend\Platform\src\app\(dashboard)\list\courses\page.tsx
+// File: C:\Users\ok\Documents\GitHub\EduGenie\client\src\app\(dashboard)\list\courses\page.tsx
 import * as entry from '../../../../../../src/app/(dashboard)/list/courses/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

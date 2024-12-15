@@ -738,6 +738,9 @@ video {
 .min-w-\[130px\] {
   min-width: 130px;
 }
+.min-w-full {
+  min-width: 100%;
+}
 .max-w-lg {
   max-width: 32rem;
 }
@@ -807,6 +810,9 @@ video {
 }
 .overflow-y-auto {
   overflow-y: auto;
+}
+.rounded {
+  border-radius: 0.25rem;
 }
 .rounded-2xl {
   border-radius: 1rem;
@@ -1261,6 +1267,10 @@ video {
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 .focus\:border-blue-500:focus {

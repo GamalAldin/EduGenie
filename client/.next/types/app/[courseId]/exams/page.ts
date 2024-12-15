@@ -1,4 +1,4 @@
-// File: C:\Users\ok\Desktop\Grad_frontend\Platform\src\app\[courseId]\exams\page.tsx
+// File: C:\Users\ok\Documents\GitHub\EduGenie\client\src\app\[courseId]\exams\page.tsx
 import * as entry from '../../../../../src/app/[courseId]/exams/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
