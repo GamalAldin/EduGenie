@@ -1,34 +1,20 @@
 "use client";
-<<<<<<< Updated upstream
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Exam } from "@/types/exam";
 
 const ExamDetailsPage = () => {
   const { courseId, examId } = useParams(); // Dynamic route parameters
-=======
-
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { Exam } from "@/types/exam";
-
-const ExamDetailsPage = () => {
-  const { courseId, examId } = useParams();
->>>>>>> Stashed changes
   const [exam, setExam] = useState<Exam | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-<<<<<<< Updated upstream
     if (!courseId || !examId) {
       setError("Missing courseId or examId");
       setLoading(false);
       return;
     }
-=======
-    if (!courseId || !examId) return;
->>>>>>> Stashed changes
 
     const fetchExamDetails = async () => {
       if (!process.env.NEXT_PUBLIC_API) {
@@ -50,7 +36,6 @@ const ExamDetailsPage = () => {
         const data: Exam = await response.json();
         setExam(data);
       } catch (err) {
-        console.error("Error fetching exam details:", err);
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         setLoading(false);
@@ -77,18 +62,13 @@ const ExamDetailsPage = () => {
       <p>
         <strong>Course ID:</strong> {exam.course || "No course ID available"}
       </p>
-<<<<<<< Updated upstream
 
       {exam.sections?.length > 0 ? (
-=======
-      {exam.sections && exam.sections.length > 0 ? (
->>>>>>> Stashed changes
         exam.sections.map((section) => (
-          <div key={section._id}>
-            <h2>
+          <div key={section._id} className="mb-4">
+            <h2 className="text-lg font-medium">
               Section {section.section_number}: {section.section_title}
             </h2>
-<<<<<<< Updated upstream
             {section.questions?.length > 0 ? (
               section.questions.map((question) => (
                 <div key={question._id} className="mb-2">
@@ -133,11 +113,6 @@ const ExamDetailsPage = () => {
                 No questions available in this section.
               </p>
             )}
-=======
-            {section.questions.map((question) => (
-              <p key={question._id}>{question.question}</p>
-            ))}
->>>>>>> Stashed changes
           </div>
         ))
       ) : (

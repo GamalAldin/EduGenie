@@ -23,7 +23,9 @@ const CourseDetailsPage = ({ params }: { params: { courseId: string } }) => {
 
   const fetchChapters = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/chapters`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/chapters`
+      );
       if (!response.ok) throw new Error("Failed to fetch chapters");
       const data = await response.json();
       setChapters(data || []);
@@ -81,9 +83,16 @@ const CourseDetailsPage = ({ params }: { params: { courseId: string } }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              fetch(`${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/${chapter._id}`, {
-                method: "DELETE",
-              }).then(() => setChapters((prev) => prev.filter((ch) => ch._id !== chapter._id)));
+              fetch(
+                `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/${chapter._id}`,
+                {
+                  method: "DELETE",
+                }
+              ).then(() =>
+                setChapters((prev) =>
+                  prev.filter((ch) => ch._id !== chapter._id)
+                )
+              );
             }}
             className="text-red-500"
           >
@@ -98,9 +107,12 @@ const CourseDetailsPage = ({ params }: { params: { courseId: string } }) => {
   const handleChapterClick = async (chapterId: string) => {
     try {
       // Send GET request to fetch the PDF
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/${chapterId}/pdf`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/${chapterId}/pdf`,
+        {
+          method: "GET",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch PDF");
@@ -129,7 +141,10 @@ const CourseDetailsPage = ({ params }: { params: { courseId: string } }) => {
     <div className="bg-white p-6 rounded-md">
       <h1 className="text-lg font-semibold">Course Details</h1>
       <div className="flex justify-between items-center mb-4">
-        <TableSearch value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+        <TableSearch
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         <button
           onClick={() => setShowFormModal(true)}
           className="bg-blue-500 text-white p-2 rounded-md"
@@ -141,7 +156,10 @@ const CourseDetailsPage = ({ params }: { params: { courseId: string } }) => {
       <Table columns={columns} data={filteredChapters} renderRow={renderRow} />
 
       {showFormModal && (
-        <FormModal title="Add New Chapter" onClose={() => setShowFormModal(false)}>
+        <FormModal
+          title="Add New Chapter"
+          onClose={() => setShowFormModal(false)}
+        >
           <ChapterForm onSubmit={handleAddChapter} />
         </FormModal>
       )}
