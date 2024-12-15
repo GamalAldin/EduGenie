@@ -1,122 +1,191 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { Exam } from "@/types/exam";
+
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
+import FormModal from "@/components/FormModal";
+import TableSearch from "@/components/TableSearch";
+import QuestionForm from "@/components/forms/QuestionForm"; // A form to add/edit a question
+import { Exam, Question, Section } from "@/types/exam";
 
 const ExamDetailsPage = () => {
-  const { courseId, examId } = useParams(); // Dynamic route parameters
+  const { courseId, examId } = useParams();
   const [exam, setExam] = useState<Exam | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [showFormModal, setShowFormModal] = useState(false); // Add/Edit Question Modal
+  const [selectedSection, setSelectedSection] = useState<Section | null>(null); // Track selected section
+  const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(
+    null
+  ); // Track selected question
+  const router = useRouter();
 
   useEffect(() => {
-    if (!courseId || !examId) {
-      setError("Missing courseId or examId");
-      setLoading(false);
-      return;
-    }
-
-    const fetchExamDetails = async () => {
-      if (!process.env.NEXT_PUBLIC_API) {
-        setError("API base URL is not defined");
-        setLoading(false);
-        return;
-      }
-
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/exams/${examId}`
-        );
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch exam details: ${response.statusText}`
-          );
-        }
-        const data: Exam = await response.json();
-        setExam(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchExamDetails();
   }, [courseId, examId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const fetchExamDetails = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/exams/${examId}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch exam details");
+      const data: Exam = await response.json();
+      setExam(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  if (!exam) return <p>No exam data available.</p>;
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (!exam) return;
+
+    const allQuestions = exam.sections.flatMap((section) => section.questions);
+    const filtered = allQuestions.filter((question) =>
+      question.question.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredQuestions(filtered);
+  };
+
+  const handleDeleteQuestion = async (
+    sectionId: string,
+    questionId: string
+  ) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/exams/${examId}/sections/${sectionId}/questions/${questionId}`,
+        { method: "DELETE" }
+      );
+      if (!response.ok) throw new Error("Failed to delete question");
+      fetchExamDetails(); // Refresh the exam details after deletion
+    } catch (error) {
+      console.error("Error deleting question:", error);
+      alert("Failed to delete question.");
+    }
+  };
+
+  const handleEditQuestion = (section: Section, question: Question) => {
+    setSelectedSection(section);
+    setSelectedQuestion(question);
+    setShowFormModal(true); // Open the modal
+  };
+
+  const handleAddQuestion = (section: Section) => {
+    setSelectedSection(section);
+    setSelectedQuestion(null); // No question selected means adding a new one
+    setShowFormModal(true);
+  };
+
+  const handleSubmitQuestion = async (questionData: Question) => {
+    try {
+      const method = selectedQuestion ? "PUT" : "POST";
+      const url = selectedQuestion
+        ? `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/exams/${examId}/sections/${selectedSection?._id}/questions/${selectedQuestion._id}`
+        : `${process.env.NEXT_PUBLIC_API}/teacher/${courseId}/exams/${examId}/sections/${selectedSection?._id}/questions`;
+
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(questionData),
+      });
+
+      if (!response.ok) throw new Error("Failed to save question");
+      alert("Question saved successfully.");
+      setShowFormModal(false); // Close the modal
+      fetchExamDetails(); // Refresh the exam details
+    } catch (error) {
+      console.error("Error saving question:", error);
+      alert("Failed to save question.");
+    }
+  };
+
+  const columns = [
+    { header: "No.", accessor: "number", className: "w-10 text-center" }, // Added for question number
+    { header: "Question", accessor: "question" },
+    { header: "Actions", accessor: "actions", className: "w-40 text-center" },
+  ];
+
+  const renderRow = (question: Question, section: Section, index: number) => (
+    <tr key={question._id} className="hover:bg-gray-100">
+      <td className="px-4 py-2 text-center">{index + 1}</td>{" "}
+      {/* Question number */}
+      <td className="px-4 py-2">{question.question}</td>
+      <td className="px-4 py-2 text-center">
+        <div className="flex justify-center gap-2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleEditQuestion(section, question);
+            }}
+            className="text-blue-500 hover:underline"
+          >
+            Edit
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDeleteQuestion(section._id, question._id);
+            }}
+            className="text-red-500 hover:underline"
+          >
+            Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  );
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg">
-      <h1 className="text-xl font-semibold mb-4">Exam Details</h1>
-      <p>
-        <strong>Exam ID:</strong> {exam._id}
-      </p>
-      <p>
-        <strong>Exam Topic:</strong> {exam.exam_topic || "No topic available"}
-      </p>
-      <p>
-        <strong>Course ID:</strong> {exam.course || "No course ID available"}
-      </p>
+    <div className="bg-white p-6 rounded-md">
+      <h1 className="text-lg font-semibold">Exam Details</h1>
+      <div className="flex justify-between items-center mb-4">
+        <TableSearch
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
 
-      {exam.sections?.length > 0 ? (
-        exam.sections.map((section) => (
-          <div key={section._id} className="mb-4">
-            <h2 className="text-lg font-medium">
-              Section {section.section_number}: {section.section_title}
-            </h2>
-            {section.questions?.length > 0 ? (
-              section.questions.map((question) => (
-                <div key={question._id} className="mb-2">
-                  <p>
-                    <strong>Question {question.question_number}:</strong>{" "}
-                    {question.question}
-                  </p>
-
-                  {question.choices?.length ? (
-                    <ul>
-                      {question.choices.map((choice, index) => (
-                        <li key={index}>{choice}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-gray-500 italic">
-                      No choices available.
-                    </p>
-                  )}
-
-                  <p>
-                    <strong>Model Answer:</strong> {question.model_answer}
-                  </p>
-                  <p>
-                    <strong>Grading Criteria:</strong>
-                  </p>
-                  <ul>
-                    {question.grading_criteria?.length ? (
-                      question.grading_criteria.map((criteria, index) => (
-                        <li key={index}>{criteria}</li>
-                      ))
-                    ) : (
-                      <li className="text-gray-500 italic">
-                        No grading criteria available.
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              ))
-            ) : (
-              <p className="text-gray-500 italic">
-                No questions available in this section.
-              </p>
-            )}
+      {exam?.sections?.map((section) => (
+        <div key={section._id} className="mb-6">
+          <h2 className="text-lg font-semibold">
+            Section {section.section_number}: {section.section_title}
+          </h2>
+          <div className="flex justify-end mb-4">
+            <button
+              onClick={() => handleAddQuestion(section)}
+              className="bg-blue-500 text-white p-2 rounded-md"
+            >
+              + Add Question
+            </button>
           </div>
-        ))
-      ) : (
-        <p className="text-gray-500 italic">No sections available.</p>
+          <table className="table-auto w-full border-collapse border border-gray-200">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-4 py-2 text-center w-10">No.</th>
+                <th className="px-4 py-2 text-left">Question</th>
+                <th className="px-4 py-2 text-center w-40">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {section.questions.map((question, index) =>
+                renderRow(question, section, index)
+              )}
+            </tbody>
+          </table>
+        </div>
+      ))}
+
+      {showFormModal && (
+        <FormModal
+          title={selectedQuestion ? "Edit Question" : "Add Question"}
+          onClose={() => setShowFormModal(false)}
+        >
+          <QuestionForm
+            question={selectedQuestion}
+            onSubmit={handleSubmitQuestion}
+          />
+        </FormModal>
       )}
     </div>
   );
