@@ -425,7 +425,7 @@ const CoursesPage = () => {
   const renderRow = (course: Course) => (
     <tr
       key={course.id}
-      className="hover:bg-gray-100 cursor-pointer"
+      className="hover:bg-gray-100 cursor-pointer relative"
       onClick={() => toggleDropdown(course.id)} // Open dropdown when clicking on course name
     >
       <td>{course.name}</td>
@@ -451,21 +451,21 @@ const CoursesPage = () => {
             Delete
           </button>
           {dropdownOpen === course.id && (
-          <div className="absolute bg-white border border-gray-300 rounded-lg shadow-lg mt-2 w-48">
-            <button
-              onClick={() => handleRedirect("chapters", course.id)}
-              className="block px-4 py-2 text-black hover:bg-blue-100 rounded-tl-lg rounded-tr-lg"
-            >
-              Chapters
-            </button>
-            <button
-              onClick={() => handleRedirect("exams", course.id)}
-              className="block px-4 py-2 text-black hover:bg-blue-100 rounded-bl-lg rounded-br-lg"
-            >
-              Exams
-            </button>
-          </div>
-        )}
+            <div className="absolute right-0 bg-white border border-gray-300 rounded-lg shadow-lg mt-2 w-auto">
+              <button
+                onClick={() => handleRedirect("chapters", course.id)}
+                className="block px-4 py-2 text-black hover:bg-blue-100 rounded-tl-lg rounded-tr-lg"
+              >
+                Chapters
+              </button>
+              <button
+                onClick={() => handleRedirect("exams", course.id)}
+                className="block px-4 py-2 text-black hover:bg-blue-100 rounded-bl-lg rounded-br-lg"
+              >
+                Exams
+              </button>
+            </div>
+          )}
         </div>
       </td>
     </tr>
@@ -510,3 +510,6 @@ const CoursesPage = () => {
 };
 
 export default CoursesPage;
+
+
+
