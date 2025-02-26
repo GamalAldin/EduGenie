@@ -1,0 +1,173 @@
+[
+  {
+    "_id": "674854ccf020c1e3a68897c3",
+    "exam_topic": "Ch 2 - PACT Framework",
+    "sections": [
+      {
+        "section_number": 1,
+        "section_title": "Short Answer Questions",
+        "questions": [
+          {
+            "question_number": 1,
+            "question": "Explain the PACT framework and its significance in interactive systems design.",
+            "model_answer": "The PACT framework consists of four key elements: People, Activities, Contexts, and Technologies. This framework is significant in interactive systems design as it emphasizes the interplay between these elements. Designers must understand the characteristics and needs of the users (People), the tasks they aim to accomplish (Activities), the environments in which these tasks take place (Contexts), and the technological resources available (Technologies). Recognizing this interaction helps in creating systems that are user-centered, efficient, and adaptive to real-world scenarios.",
+            "grading_criteria": [
+              "Full Marks: 10 points for a complete response including: a clear definition of the PACT framework (2 points), description of each element (4 points total, 1 point for each element), and explanation of its significance (4 points).",
+              "Partial Marks: 5-8 points for partially correct response such as: mentioning some elements of PACT but not defining all (1-3 points), or explaining significance without detailing elements (3 points).",
+              "0 Marks: 0 points for no relevant answers or demonstrating a misunderstanding of the PACT framework, e.g., failing to mention the four elements."
+            ],
+            "choices": null,
+            "_id": "674854ccf020c1e3a68897c5"
+          },
+          {
+            "question_number": 2,
+            "question": "What roles do 'Activities' and 'Contexts' play in shaping technology requirements according to the PACT framework?",
+            "model_answer": "In the PACT framework, 'Activities' refer to the tasks that users perform, which define the requirements for technology. This includes what users need to accomplish, the steps involved, and the desired outcomes of these tasks. 'Contexts' refer to the environments in which these activities occur, including physical, social, and organizational aspects. By analyzing both activities and contexts, designers can identify user needs more accurately and develop technologies that align well with the real-world situations users encounter, ensuring technology is both practical and functional.",
+            "grading_criteria": [
+              "Full Marks: 10 points for a full response including: definition and explanation of 'Activities' (3 points), definition and explanation of 'Contexts' (3 points), and how both influence technology requirements (4 points).",
+              "Partial Marks: 5-8 points for mentioning either Activities or Contexts but not both, or providing only a superficial link to technology requirements (3-6 points).",
+              "0 Marks: 0 points for incorrect answers or failure to address the question regarding 'Activities' and 'Contexts' or their impact on technology."
+            ],
+            "choices": null,
+            "_id": "674854ccf020c1e3a68897c6"
+          }
+        ],
+        "_id": "674854ccf020c1e3a68897c4"
+      },
+      {
+        "section_number": 2,
+        "section_title": "Multiple Choice Questions",
+        "questions": [
+          {
+            "question_number": 1,
+            "question": "Which of the following best summarizes the relationship between the four PACT elements?",
+            "model_answer": "The four elements of the PACT framework - People, Activities, Contexts, and Technologies - interact closely to inform the design process. Their intertwined nature helps designers to create user-centered solutions that address real needs within specific environments.",
+            "grading_criteria": [
+              "Full Marks: 1 point for selecting choice C, understanding the interaction among the elements.",
+              "Partial Marks: 0.5 points for selecting choices A or D, indicating some understanding but not fully grasping the interaction.",
+              "0 Marks: 0 points for selecting choices B or failing to recognize the relationship among the elements."
+            ],
+            "choices": [
+              "A. They operate independently of one another.",
+              "B. They each represent a distinct phase of design.",
+              "C. They interact to define requirements and shape design.",
+              "D. They are solely focused on the user experience."
+            ],
+            "correct_answer": "C",
+            "_id": "674854ccf020c1e3a68897c8"
+          },
+          {
+            "question_number": 2,
+            "question": "True or False: The PACT framework suggests that technologies only serve to enhance existing activities.",
+            "model_answer": "False. The PACT framework indicates that while technologies can enhance existing activities, they also have the potential to transform or change how those activities are performed completely. This underscores the dynamic relationship between technology and user behavior.",
+            "grading_criteria": [
+              "Full Marks: 1 point for correctly answering 'False' and providing a brief explanation.",
+              "Partial Marks: 0.5 points for answering 'False' without explanation or for ambiguous reasoning.",
+              "0 Marks: 0 points for answering 'True' or failing to demonstrate understanding of the framework."
+            ],
+            "choices": null,
+            "correct_answer": "False",
+            "_id": "674854ccf020c1e3a68897c9"
+          }
+        ],
+        "_id": "674854ccf020c1e3a68897c7"
+      },
+      {
+        "section_number": 3,
+        "section_title": "True/False Questions",
+        "questions": [
+          {
+            "question_number": 1,
+            "question": "True or False: The PACT framework was designed solely for evaluating user interface designs.",
+            "model_answer": "False. The PACT framework is a comprehensive model that applies broadly to interactive systems design, addressing user needs, contexts, activities, and technologies involved, not just limited to user interface designs.",
+            "grading_criteria": [
+              "Full Marks: 1 point for answering 'False' along with a brief justification.",
+              "Partial Marks: 0.5 points for the correct answer 'False' but with insufficient reasoning.",
+              "0 Marks: 0 points for answering 'True' or showing no understanding of the PACT framework."
+            ],
+            "choices": null,
+            "correct_answer": "False",
+            "_id": "674854ccf020c1e3a68897cb"
+          },
+          {
+            "question_number": 2,
+            "question": "True or False: In the PACT framework, 'Contexts' solely refer to the physical setting where activities take place.",
+            "model_answer": "False. 'Contexts' in the PACT framework encompass not just the physical setting but also social, cultural, and organizational factors that can influence how activities are performed and how technologies are used.",
+            "grading_criteria": [
+              "Full Marks: 1 point for answering 'False' along with a clear explanation of what 'Contexts' include.",
+              "Partial Marks: 0.5 points for the correct answer 'False' but failing to specify the broader scope of 'Contexts.'",
+              "0 Marks: 0 points for answering 'True' or misinterpreting the definition of 'Contexts' in the PACT framework."
+            ],
+            "choices": null,
+            "correct_answer": "False",
+            "_id": "674854ccf020c1e3a68897cc"
+          }
+        ],
+        "_id": "674854ccf020c1e3a68897ca"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "_id": "6748bcecc1754c4d28ea3286",
+    "exam_topic": "Ch 2 -PACT Framework",
+    "sections": [
+      {
+        "section_number": 1,
+        "section_title": "Questions Type",
+        "questions": [
+          {
+            "question_number": 1,
+            "question": "What are the main components of the PACT framework and how do they interact with each other?",
+            "model_answer": "The PACT framework consists of four main components: People, Activities, Contexts, and Technologies. These components interact in the following ways: People engage in Activities using Technologies, and the Contexts define the environment and conditions under which these interactions occur. For instance, when a student uses a phone to send a text message (Technology) while sitting on a bus (Context), the activity of messaging is tailored by both the technical capabilities of the phone and the situational factors of the bus environment.",
+            "grading_criteria": [
+              "Full marks: 10 points: Complete identification of the four components (People, Activities, Contexts, Technologies) - 4 points; Clear explanation of the interactions between each component - 6 points.",
+              "Partial credit: 5 points: Identification of at least two components with limited explanation of their interaction, or clear interaction explanation without full component identification.",
+              "0 points: 0 points for failure to identify any components, providing incorrect information, or lack of coherent structure in the response."
+            ],
+            "choices": null,
+            "_id": "6748bcecc1754c4d28ea3288"
+          },
+          {
+            "question_number": 2,
+            "question": "How does the PACT framework emphasize the importance of design in technology development?",
+            "model_answer": "The PACT framework highlights that the design of technology must take into account the requirements established by the activities people undertake and the contexts in which those activities occur. Designers are tasked with creating technologies that not only assist but also enhance these activities. For example, designing software for air traffic controllers requires understanding the dynamic and high-stakes context of managing air traffic, which shapes the design and functionality of the technology.",
+            "grading_criteria": [
+              "Full marks: 8 points: Explanation of the relationship between activity requirements and technology design - 4 points; Discussion of how context influences this design process - 4 points.",
+              "Partial credit: 4 points: Incomplete explanation of either the activity or context's influence on technology design.",
+              "0 points: 0 points for lack of understanding of design significance or failure to connect context and activity to technology."
+            ],
+            "choices": null,
+            "_id": "6748bcecc1754c4d28ea3289"
+          },
+          {
+            "question_number": 3,
+            "question": "Illustrate how the PACT framework can present challenges in interactive system design.",
+            "model_answer": "The PACT framework presents challenges because the interaction between its components can lead to complex design requirements. For example, designers must consider that diverse user groups (People) have different needs and preferences while engaging in various activities (Activities) within multiple environments (Contexts). This diversity can lead to conflicting requirements, making it difficult to create a universal solution that satisfies all users. The challenge lies in balancing these needs while leveraging technologies effectively.",
+            "grading_criteria": [
+              "Full marks: 9 points: Identification of the complexity of interactions among People, Activities, Contexts, and Technologies - 5 points; Explanation of one or more specific challenges that arise from this complexity - 4 points.",
+              "Partial credit: 5 points: Mention of complexity in interactions but vague or limited explanation of resultant challenges.",
+              "0 points: 0 points for failure to recognize the complex nature of interactions or lack of relevant examples."
+            ],
+            "choices": null,
+            "_id": "6748bcecc1754c4d28ea328a"
+          },
+          {
+            "question_number": 4,
+            "question": "Explain how understanding the PACT elements can benefit technology designers.",
+            "model_answer": "Understanding the PACT elements enables designers to create user-centered technologies that address real needs. By fully grasping the characteristics of People, the Activities they engage in, the Contexts in which those activities occur, and the available Technologies, designers can make informed decisions that enhance usability and user satisfaction. For example, knowledge of how a 70-year-old interacts with technology can inform design choices that make devices more accessible to older users.",
+            "grading_criteria": [
+              "Full marks: 10 points: Clear explanation of how each of the PACT elements can inform design - 6 points; Specific example illustrating the application of this understanding - 4 points.",
+              "Partial credit: 5 points: Mention of one or two PACT elements with limited connection to design benefits.",
+              "0 points: 0 points for incorrect application of PACT elements to design or general vagueness without linkage to user needs."
+            ],
+            "choices": null,
+            "_id": "6748bcecc1754c4d28ea328b"
+          }
+        ],
+        "_id": "6748bcecc1754c4d28ea3287"
+      }
+    ],
+    "__v": 0
+  }
+]
