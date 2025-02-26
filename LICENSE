@@ -1,45 +1,13 @@
-
-GNU AFFERO GENERAL PUBLIC LICENSE v3.0 (Modified for Non-Commercial Use)
-
-Version 3, 19 November 2007
-
-Copyright (C) 2007 Free Software Foundation, Inc. https://fsf.org/Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
-
-Preamble
-
-The GNU Affero General Public License is a free, copyleft license for software and other kinds of works, specifically designed to ensure cooperation with the community in the case of network server software.
-
-The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, our General Public Licenses are intended to guarantee your freedom to share and change all versions of a program—to make sure it remains free software for all its users.
-
-When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software and that you receive source code or can get it if you want it.
-
-Additional Non-Commercial Clause
-
-1. Non-Commercial Use Only
-
-This software is licensed under the terms of the GNU Affero General Public License v3.0 with the following additional restriction:
-
-You MAY NOT use, distribute, or modify this software for any commercial purpose.
-
-Commercial purpose includes but is not limited to: selling, licensing, or integrating this software into a product or service for which you receive compensation, whether directly or indirectly.
-
-2. Permitted Uses
+Creative Commons Attribution-NonCommercial 4.0 International
 
 You are free to:
 
-Use this software for personal, academic, or research purposes.
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material
 
-Modify and share this software as long as you comply with the AGPL v3.0 and this Non-Commercial Clause.
+Under the following terms:
 
-Host this software on a personal or non-commercial server, provided there is no financial gain.
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- **NonCommercial** — You may not use the material for commercial purposes.
 
-3. Enforcement
-
-Any attempt to use this software commercially without explicit written permission from the original author(s) is a violation of this license and may result in legal action.
-
-4. Disclaimer
-
-This software is provided "as is", without any warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.
-
-For any inquiries regarding exceptions or special permissions, please contact the original author(s).
-
+Full license: https://creativecommons.org/licenses/by-nc/4.0/
