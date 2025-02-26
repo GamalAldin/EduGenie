@@ -1,8 +1,9 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const roleMiddleware = require("../../middleware/auth");
 
-const chapterController = require("../../controller/teacher/chapter");
+const chapterController = require("../../controllers/teacher/chapter");
 
 const dest = path.join(__dirname, "..", "..", "uploads");
 
@@ -29,6 +30,7 @@ const router = express.Router();
 // Route to handle file upload
 router.post(
   "/:courseId/upload",
+  roleMiddleware(["teacher"]),
   (req, res, next) => {
     upload.single("pdfFile")(req, res, (err) => {
       if (err instanceof multer.MulterError) {

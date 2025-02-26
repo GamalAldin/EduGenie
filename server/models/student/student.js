@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
-  id: {
+  username: {
     type: String,
     required: true,
   },
@@ -14,10 +14,15 @@ const studentSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
+  firstName: {
     type: String,
     required: true,
   },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  profilePicture: { type: String },
   courses: [
     {
       type: Schema.Types.ObjectId,

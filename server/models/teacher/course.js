@@ -26,6 +26,22 @@ const courseSchema = new Schema({
       ref: "Exam",
     },
   ],
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Student",
+    },
+  ],
+  pendingStudents: [
+    {
+      student: { type: Schema.Types.ObjectId, ref: "Student" },
+      status: {
+        type: String,
+        enum: ["pending", "approved"],
+        default: "pending",
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Course", courseSchema);
